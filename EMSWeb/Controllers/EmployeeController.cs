@@ -31,6 +31,7 @@ namespace EMSWeb.Controllers
             {
                 _db.Employees.Add(emp);
                 _db.SaveChanges();
+                TempData["success"] = "Employee added successfully";
                 return RedirectToAction("Index");
             }
             return View(emp);
@@ -61,6 +62,7 @@ namespace EMSWeb.Controllers
             {
                 _db.Employees.Update(emp);
                 _db.SaveChanges();
+                TempData["success"] = "Employee updated successfully";
                 return RedirectToAction("Index");
             }
             return View(emp);
@@ -93,6 +95,7 @@ namespace EMSWeb.Controllers
             }
             _db.Employees.Remove(emp);
             _db.SaveChanges();
+            TempData["success"] = "Employee deleted successfully";
             return RedirectToAction("Index");
 
             
