@@ -3,17 +3,66 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index Employee</h1>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Employee List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Employee" asp-action="Create" class="btn btn-primary">
+                Add New Employee
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<br></br>
 
 <table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
             <th>
-                Employee Name
+                Id
             </th>
             <th>
-
+                Name
             </th>
+            <th>
+                Position
+            </th>
+            <th>
+                Salary
+            </th>
+            
+            <th></th>
         </tr>
     </thead>
+    <tbody>
+        @foreach (var Emp in Model)
+        {
+            <tr>
+                <td width="5%">
+                    @Emp.Id
+                </td>
+                <td width="15%">
+                    @Emp.Name
+                </td>
+                <td width="15%">
+                    @Emp.Position
+                </td>
+                <td width="5%">
+                    @Emp.Salary
+                </td>
+                
+                <td width="10%">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Employee" asp-action="Edit" asp-route-id="@Emp.Id" class="btn btn-primary">Edit</a>
+                        <a asp-controller="Employee" asp-action="Delete" asp-route-id="@Emp.Id" class="btn btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+
+        }
+    </tbody>
 </table>
